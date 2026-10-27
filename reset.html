@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Choose a new password · Fable</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#f7f6f4">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="nav scrolled">
+    <div class="nav-inner">
+      <a class="nav-logo" href="./" aria-label="Fable home"><img src="assets/wordmark-dark.png" alt="Fable" width="96" height="43"></a>
+    </div>
+  </header>
+
+  <main class="reset">
+    <div class="reset-card">
+      <img class="reset-star" src="assets/star.png" alt="" width="64" height="64">
+      <div id="state-loading"><h1>One moment…</h1></div>
+
+      <form id="state-form" hidden>
+        <h1>Choose a new password</h1>
+        <p class="muted-text">For your Fable account <b id="who"></b></p>
+        <label>New password <input class="field" id="pw1" type="password" minlength="6" autocomplete="new-password" required></label>
+        <label>Type it again <input class="field" id="pw2" type="password" minlength="6" autocomplete="new-password" required></label>
+        <p class="reset-error" id="form-error" hidden></p>
+        <button class="btn btn-red btn-lg" id="save">Save new password</button>
+      </form>
+
+      <div id="state-done" hidden>
+        <h1>Password changed ✓</h1>
+        <p class="muted-text">Go back to Fable and sign in with your new password.</p>
+      </div>
+
+      <div id="state-problem" hidden>
+        <h1 id="problem-title">This link doesn’t work</h1>
+        <p class="muted-text" id="problem-text"></p>
+      </div>
+    </div>
+  </main>
+
+  <script src="vendor/supabase.js"></script>
+  <script>
+    // Fable's Supabase project. Both values are public by design (the database's
+    // security rules decide what anyone can do).
+    const SUPABASE_URL = 'https://vspdoeohufyewheeyyeo.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZzcGRvZW9odWZ5ZXdoZWV5eWVvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTMwNTIzMTUsImV4cCI6MjEwODYyODMxNX0.Fp37GU59B0Y9BOsG4nuT-4N-_njHkbMKBJmbwLAuuhQ';
+
+    const $ = (id) => document.getElementById(id);
+    function show(state) {
+      for (const id of ['state-loading', 'state-form', 'state-done', 'state-problem']) $(id).hidden = id !== state;
+    }
+    function problem(title, text) {
+      $('problem-title').textContent = title;
+      $('problem-text').textContent = text;
+      show('state-problem');
+    }
+
+    // The email link lands here with details after the # (or an error if it expired).
+    const params = new URLSearchParams(location.hash.slice(1));
+    const linkError = params.get('error_code') || params.get('error');
+
+    const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+      auth: { persistSession: false, detectSessionInUrl: true, flowType: 'implicit' },
+    });
+
+    (async () => {
+      if (linkError) {
+        history.replaceState(null, '', location.pathname);
+        problem('This link has expired', 'Reset links only work once and for a limited time. In Fable, click “Forgot password?” to get a new email.');
+        return;
+      }
+      // Give the library a moment to read the link, then remove it from the address bar.
+      const { data } = await sb.auth.getSession();
+      history.replaceState(null, '', location.pathname);
+      if (!data.session) {
+        problem('Open this page from your email', 'To choose a new password, click the link in your Fable “Reset your password” email. In Fable, “Forgot password?” sends you one.');
+        return;
+      }
+      $('who').textContent = data.session.user.email || '';
+      show('state-form');
+      $('pw1').focus();
+    })();
+
+    $('state-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const err = $('form-error');
+      err.hidden = true;
+      const pw = $('pw1').value;
+      if (pw.length < 6) { err.textContent = 'Your password needs at least 6 characters.'; err.hidden = false; return; }
+      if (pw !== $('pw2').value) { err.textContent = 'Those two passwords don’t match.'; err.hidden = false; return; }
+      $('save').disabled = true;
+      $('save').textContent = 'Saving…';
+      const { error } = await sb.auth.updateUser({ password: pw });
+      if (error) {
+        err.textContent = /different from the old/i.test(error.message)
+          ? 'Pick a password different from your old one.'
+          : error.message;
+        err.hidden = false;
+        $('save').disabled = false;
+        $('save').textContent = 'Save new password';
+        return;
+      }
+      await sb.auth.signOut({ scope: 'local' });
+      show('state-done');
+    });
+  </script>
+</body>
+</html>

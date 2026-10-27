@@ -19,6 +19,7 @@
 }
 
 * { box-sizing: border-box; }
+[hidden] { display: none !important; }
 html { scroll-behavior: smooth; scroll-padding-top: 90px; }
 body {
   margin: 0;
@@ -259,6 +260,20 @@ p { margin: 0; }
 .legal a { color: var(--red); text-decoration: underline; text-underline-offset: 3px; }
 .legal-summary { margin-top: 32px; padding: 20px 22px; border-radius: 18px; background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow); }
 .legal-summary b { font-size: 16px; }
+
+/* ============ Reset password page ============ */
+
+.reset { min-height: calc(100vh - 160px); display: grid; place-items: center; padding: 40px 20px; }
+.reset-card { width: min(420px, 100%); padding: 36px 30px 32px; border-radius: 26px; background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow); text-align: center; }
+.reset-star { width: 64px; margin: 0 auto 18px; filter: drop-shadow(0 8px 16px rgba(229, 19, 29, .3)); }
+.reset-card h1 { font-size: 28px; font-weight: 800; }
+.muted-text { color: var(--muted); margin-top: 10px; }
+.reset-card form { display: flex; flex-direction: column; gap: 14px; }
+.reset-card label { display: flex; flex-direction: column; gap: 6px; text-align: left; font-size: 14px; font-weight: 600; color: var(--ink-2); }
+.field { height: 48px; padding: 0 14px; border-radius: 12px; border: 1px solid var(--line); background: #f3f2ef; font: inherit; font-size: 16px; color: var(--ink); outline: 0; }
+.field:focus { border-color: var(--red); background: #fff; box-shadow: 0 0 0 4px var(--red-soft); }
+.reset-card .btn { width: 100%; margin-top: 6px; }
+.reset-error { margin: 0; padding: 10px 12px; border-radius: 10px; background: var(--red-soft); color: #b0101a; font-size: 14px; text-align: left; }
 
 /* ============ Toast ============ */
 
