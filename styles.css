@@ -273,6 +273,11 @@ p { margin: 0; }
 .field { height: 48px; padding: 0 14px; border-radius: 12px; border: 1px solid var(--line); background: #f3f2ef; font: inherit; font-size: 16px; color: var(--ink); outline: 0; }
 .field:focus { border-color: var(--red); background: #fff; box-shadow: 0 0 0 4px var(--red-soft); }
 .reset-card .btn { width: 100%; margin-top: 6px; }
+.pw-wrap { position: relative; display: flex; }
+.pw-wrap .field { flex: 1; padding-right: 50px; }
+.pw-eye { position: absolute; right: 6px; top: 50%; transform: translateY(-50%); width: 38px; height: 38px; border: 0; border-radius: 10px; background: none; color: var(--muted); display: grid; place-items: center; cursor: pointer; }
+.pw-eye:hover { color: var(--ink); background: rgba(13, 13, 15, .06); }
+.pw-eye svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 .reset-error { margin: 0; padding: 10px 12px; border-radius: 10px; background: var(--red-soft); color: #b0101a; font-size: 14px; text-align: left; }
 
 /* ============ Toast ============ */
