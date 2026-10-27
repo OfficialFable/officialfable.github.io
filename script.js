@@ -1,9 +1,9 @@
 // Fable website: download links, navigation and the little animations.
 
-// Where the installer lives. Set `url` once a release is uploaded (for example a
-// GitHub Release), and every Download button on the page will use it.
+// Where the installer lives. This GitHub link always serves the newest release's
+// Fable-Setup.exe, so it doesn't change between versions. Every Download button uses it.
 const DOWNLOAD = {
-  url: '',
+  url: 'https://github.com/OfficialFable/officialfable.github.io/releases/latest/download/Fable-Setup.exe',
   version: '0.5.0',
   size: '117 MB',
 };
