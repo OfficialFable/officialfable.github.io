@@ -239,6 +239,10 @@ p { margin: 0; }
 .cta h2 { font-size: clamp(36px, 6vw, 64px); font-weight: 820; margin-top: 30px; }
 .cta p:not(.fine) { color: rgba(255, 255, 255, .65); margin: 14px 0 32px; font-size: 18px; }
 
+.cta-discord { display: inline-flex; align-items: center; gap: 8px; margin-top: 22px; color: rgba(255, 255, 255, .75); font-weight: 600; font-size: 15px; }
+.cta-discord:hover { color: #fff; }
+.faq details p a { color: var(--red); text-decoration: underline; text-underline-offset: 3px; }
+
 /* ============ Footer ============ */
 
 .footer { padding: 36px 20px 44px; }

@@ -4,7 +4,7 @@
 // Fable-Setup.exe, so it doesn't change between versions. Every Download button uses it.
 const DOWNLOAD = {
   url: 'https://github.com/OfficialFable/officialfable.github.io/releases/latest/download/Fable-Setup.exe',
-  version: '0.5.0',
+  version: '0.7.0', // shown until the latest release loads from GitHub
   size: '117 MB',
 };
 
@@ -24,9 +24,20 @@ function toast(message) {
 
 // ---- Download buttons ----
 
-document.querySelectorAll('[data-version]').forEach((el) => {
-  el.textContent = `Free · Version ${DOWNLOAD.version} · ${DOWNLOAD.size} · Windows 10 & 11`;
-});
+function showVersion(version, size) {
+  document.querySelectorAll('[data-version]').forEach((el) => {
+    el.textContent = `Free · Version ${version} · ${size} · Windows 10 & 11`;
+  });
+}
+showVersion(DOWNLOAD.version, DOWNLOAD.size);
+// Then show the real latest release's version and size, so this never goes out of date.
+fetch('https://api.github.com/repos/OfficialFable/officialfable.github.io/releases/latest')
+  .then((r) => (r.ok ? r.json() : null))
+  .then((release) => {
+    const asset = release?.assets?.find((a) => a.name === 'Fable-Setup.exe');
+    if (release?.tag_name && asset) showVersion(release.tag_name.replace(/^v/, ''), `${Math.round(asset.size / 1048576)} MB`);
+  })
+  .catch(() => {});
 document.querySelectorAll('[data-download]').forEach((a) => {
   if (DOWNLOAD.url) {
     a.href = DOWNLOAD.url;
