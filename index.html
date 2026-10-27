@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fable: music with your friends</title>
+  <meta name="description" content="Fable is a free desktop music app for you and your friends. Live listening rooms, weekly tournaments, and no adverts. Ever.">
+  <meta property="og:title" content="Fable: music with your friends">
+  <meta property="og:description" content="Live listening rooms, weekly tournaments, and no adverts. Ever.">
+  <meta property="og:image" content="assets/shots/home.webp">
+  <meta name="theme-color" content="#f7f6f4">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="preload" href="fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  <!-- Marks that scripts run, so sections can fade in without hiding them for everyone else. -->
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+  <header class="nav" id="nav">
+    <div class="nav-inner">
+      <a class="nav-logo" href="#top" aria-label="Fable home"><img src="assets/wordmark-dark.png" alt="Fable" width="96" height="43"></a>
+      <nav class="nav-links" id="nav-links" aria-label="Main">
+        <a href="#features">Features</a>
+        <a href="#rooms">Rooms</a>
+        <a href="#tournaments">Tournaments</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <a class="btn btn-dark btn-sm" href="#download" data-download>
+        <svg class="win" viewBox="0 0 16 16" aria-hidden="true"><path d="M0 2.3 6.5 1.4v6.2H0zm7.3-1L16 0v7.6H7.3zM0 8.4h6.5v6.2L0 13.7zm7.3 0H16V16l-8.7-1.2z"/></svg>
+        Download
+      </a>
+      <button class="nav-menu" id="nav-menu" aria-label="Menu" aria-expanded="false"><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- ============ Hero ============ -->
+    <section class="hero">
+      <a class="pill reveal" href="#rooms"><span class="pill-new">New</span> Listen Together rooms are here <span aria-hidden="true">→</span></a>
+      <h1 class="reveal">Music is better<br><span class="hl">together.</span><img class="sticker" src="assets/star.png" alt=""></h1>
+      <p class="lede reveal">Fable is a free desktop music app made for you and your friends. Jump into live listening rooms, battle in weekly tournaments, and never sit through an advert.</p>
+      <div class="hero-cta reveal">
+        <a class="btn btn-red btn-lg" href="#download" data-download>
+          <svg class="win" viewBox="0 0 16 16" aria-hidden="true"><path d="M0 2.3 6.5 1.4v6.2H0zm7.3-1L16 0v7.6H7.3zM0 8.4h6.5v6.2L0 13.7zm7.3 0H16V16l-8.7-1.2z"/></svg>
+          Download for Windows
+        </a>
+        <a class="btn btn-ghost btn-lg" href="#features">See what’s inside</a>
+      </div>
+      <p class="fine reveal" data-version>Free · Windows 10 &amp; 11</p>
+
+      <div class="shot-wrap reveal">
+        <div class="shot-glow" aria-hidden="true"></div>
+        <img class="shot" src="assets/shots/home.webp" width="2000" height="1303" alt="The Fable app showing top albums, songs friends are listening to, and the player">
+        <div class="float-card fc-room" aria-hidden="true">
+          <div class="stack"><i style="--c:#8b7cf6">M</i><i style="--c:#3ecf8e">J</i><i style="--c:#f5b83d">P</i></div>
+          <div><b>Friday night room</b><span><em class="dot"></em>4 listening · K7Q2XP</span></div>
+        </div>
+        <div class="float-card fc-react" aria-hidden="true"><span class="emoji">🔥</span><div><b>Maya</b><span>reacted to this song</span></div></div>
+        <div class="float-card fc-play" aria-hidden="true"><span class="plus">+1</span><div><b>Top Listener</b><span>You moved up to 2nd</span></div></div>
+      </div>
+    </section>
+
+    <!-- ============ Features ============ -->
+    <section class="section" id="features">
+      <p class="eyebrow reveal"><span class="eyebrow-dot"></span>Made for friends</p>
+      <h2 class="reveal">Music you love, with the people you love.</h2>
+
+      <div class="bento">
+        <article class="card card-together reveal" id="rooms">
+          <div class="mini mini-room">
+            <div class="mr-top">
+              <b>Friday night room</b>
+              <span class="code-chip">K7Q2XP</span>
+            </div>
+            <div class="mr-now">
+              <span class="cover"></span>
+              <div><b>Midnight Drive</b><span>Now playing for everyone</span></div>
+              <span class="eq" aria-hidden="true"><i></i><i></i><i></i></span>
+            </div>
+            <div class="mr-bar"><i></i></div>
+            <div class="mr-people">
+              <span class="av" style="--c:#e5131d">Y<em></em></span>
+              <span class="av" style="--c:#8b7cf6">M<em></em></span>
+              <span class="av" style="--c:#3ecf8e">J<em></em></span>
+              <span class="av" style="--c:#4fb3ff">L<em></em></span>
+              <span class="mr-host">You’re the host</span>
+            </div>
+            <div class="emoji-stream" id="emoji-stream" aria-hidden="true"></div>
+          </div>
+          <h3>Listen together, perfectly in sync</h3>
+          <p>Start a room, share the code, and everyone hears the same second of the same song. The host runs the music, admins help out, and everyone can chat and react.</p>
+        </article>
+
+        <article class="card reveal" id="tournaments">
+          <div class="mini mini-board">
+            <div class="mb-head"><b>Top Listener</b><span>Ends in 4d</span></div>
+            <ol>
+              <li><span class="rk r1">1</span><span class="av sm" style="--c:#4fb3ff">L</span>Leo<b>21</b></li>
+              <li class="me"><span class="rk r2">2</span><span class="av sm" style="--c:#e5131d">Y</span>You<b id="my-plays">15</b></li>
+              <li><span class="rk r3">3</span><span class="av sm" style="--c:#8b7cf6">M</span>Maya<b>14</b></li>
+            </ol>
+          </div>
+          <h3>Weekly tournaments</h3>
+          <p>Who listens to an artist the most this week? Every play counts, and the board resets every Monday.</p>
+        </article>
+
+        <article class="card reveal">
+          <div class="mini mini-guess">
+            <div class="mg-timer"><i></i></div>
+            <div class="mg-grid">
+              <span>Neon Hearts</span><span class="correct">Golden Static</span><span>Paper Moons</span><span>Slow Motion</span>
+            </div>
+          </div>
+          <h3>Guess the Song</h3>
+          <p>Hear a clip, name it first. Faster answers score more points.</p>
+        </article>
+
+        <article class="card reveal">
+          <div class="mini mini-friends">
+            <div class="mf"><span class="av sm" style="--c:#8b7cf6">M</span><div><b>Maya</b><span><em class="dot"></em>Listening to Golden Static</span></div></div>
+            <div class="mf"><span class="av sm" style="--c:#3ecf8e">J</span><div><b>Jonah</b><span><em class="dot"></em>In Friday night room</span></div></div>
+            <div class="mf"><span class="av sm" style="--c:#f5b83d">P</span><div><b>Priya</b><span>Played Paper Moons · 2h ago</span></div></div>
+          </div>
+          <h3>See what friends are playing</h3>
+          <p>Add friends by username and jump into whatever they’re listening to.</p>
+        </article>
+
+        <article class="card card-dark reveal">
+          <div class="zero"><span>0</span><img src="assets/star.png" alt=""></div>
+          <h3>Adverts. Not now, not ever.</h3>
+          <p>No ads between songs, no ads on the home page, no ads at all.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ How rooms work ============ -->
+    <section class="section steps-section">
+      <p class="eyebrow reveal"><span class="eyebrow-dot"></span>Listen Together</p>
+      <h2 class="reveal">A party in three clicks.</h2>
+      <div class="steps">
+        <div class="step reveal">
+          <span class="step-n">1</span>
+          <div class="step-ui"><span class="fake-btn">▶ Start room</span></div>
+          <h3>Start a room</h3>
+          <p>Give it a name. You’re the host.</p>
+        </div>
+        <div class="step reveal">
+          <span class="step-n">2</span>
+          <div class="step-ui"><span class="fake-code">K7Q2XP</span><span class="fake-copy">Copy</span></div>
+          <h3>Share the code</h3>
+          <p>Friends paste it in, or join straight from their friends list.</p>
+        </div>
+        <div class="step reveal">
+          <span class="step-n">3</span>
+          <div class="step-ui"><span class="fake-play"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1.2"/><rect x="14" y="5" width="4" height="14" rx="1.2"/></svg></span><span class="fake-wave"><i></i><i></i><i></i><i></i><i></i></span></div>
+          <h3>Press play</h3>
+          <p>Everyone hears it at the same moment, wherever they are.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Tournament showcase ============ -->
+    <section class="section showcase">
+      <div class="showcase-text reveal">
+        <p class="eyebrow"><span class="eyebrow-dot"></span>Tournaments</p>
+        <h2>Real bragging rights.</h2>
+        <ul class="ticks">
+          <li><b>Top Listener for every artist.</b> Prove you’re the biggest fan in your friend group.</li>
+          <li><b>Guess the Song.</b> Ten rounds, fifteen seconds each, best score of the week counts.</li>
+          <li><b>No cheating.</b> Plays and scores are checked on Fable’s servers, not on your computer.</li>
+          <li><b>Fresh every Monday.</b> A new week, a new chance to take the top spot.</li>
+        </ul>
+      </div>
+      <div class="showcase-shot reveal">
+        <img src="assets/shots/tournament.webp" width="2000" height="1303" loading="lazy" alt="A Top Listener tournament in Fable with a leaderboard of friends">
+      </div>
+    </section>
+
+    <!-- ============ Promises ============ -->
+    <section class="section">
+      <p class="eyebrow reveal"><span class="eyebrow-dot"></span>Our promises</p>
+      <h2 class="reveal">Built the way a music app should be.</h2>
+      <div class="promises">
+        <div class="promise reveal"><span class="pi">🚫</span><div><b>No adverts</b><p>Not between songs, not anywhere. Fable will never sell your ears.</p></div></div>
+        <div class="promise reveal"><span class="pi">👯</span><div><b>Friends, not algorithms</b><p>Your home page is shaped by the people you know, not by what’s paid to be there.</p></div></div>
+        <div class="promise reveal"><span class="pi">🔒</span><div><b>Private by default</b><p>Only your friends can see what you’re listening to. Nobody else.</p></div></div>
+        <div class="promise reveal"><span class="pi">⚖️</span><div><b>Fair play</b><p>Tournament plays and scores are counted on the server, so leaderboards stay honest.</p></div></div>
+        <div class="promise reveal"><span class="pi">🖥️</span><div><b>A real desktop app</b><p>Fast, native-feeling and made for Windows, not a website in disguise.</p></div></div>
+        <div class="promise reveal"><span class="pi">💸</span><div><b>Free</b><p>Download it, sign up, bring your friends. No card needed.</p></div></div>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section class="section faq" id="faq">
+      <p class="eyebrow reveal"><span class="eyebrow-dot"></span>FAQ</p>
+      <h2 class="reveal">Good questions.</h2>
+      <div class="faq-list reveal">
+        <details>
+          <summary>Is Fable really free?</summary>
+          <p>Yes. Fable is free to download and use, and it has no adverts.</p>
+        </details>
+        <details>
+          <summary>Why are songs 30 seconds long?</summary>
+          <p>Right now Fable plays official 30-second previews, which apps are allowed to stream for free. Full-length songs need a licensing partner, and that’s on our roadmap. Everything you do in Fable today (rooms, tournaments, friends) will work the same with full songs.</p>
+        </details>
+        <details>
+          <summary>Windows says “Windows protected your PC”. Is that safe?</summary>
+          <p>That message appears for new apps that haven’t bought a code-signing certificate yet. Click <b>More info</b>, then <b>Run anyway</b> to install Fable.</p>
+        </details>
+        <details>
+          <summary>Do I need an account?</summary>
+          <p>You can look around offline with demo friends, but you’ll need a free account to add real friends, join rooms and appear on leaderboards.</p>
+        </details>
+        <details>
+          <summary>Is Fable on Mac, iPhone or Android?</summary>
+          <p>Not yet. Fable is Windows-only for now. Other platforms may come later.</p>
+        </details>
+        <details>
+          <summary>How many people can join a room?</summary>
+          <p>Up to 50. The host can make people admins, and the room can vote someone in as admin too.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- ============ Download ============ -->
+    <section class="cta" id="download">
+      <div class="cta-glow" aria-hidden="true"></div>
+      <img class="cta-logo reveal" src="assets/wordmark.png" alt="Fable" width="280" height="125">
+      <h2 class="reveal">Bring your friends.</h2>
+      <p class="reveal">Download Fable for Windows, start a room, and press play.</p>
+      <a class="btn btn-red btn-lg reveal" href="#download" data-download>
+        <svg class="win" viewBox="0 0 16 16" aria-hidden="true"><path d="M0 2.3 6.5 1.4v6.2H0zm7.3-1L16 0v7.6H7.3zM0 8.4h6.5v6.2L0 13.7zm7.3 0H16V16l-8.7-1.2z"/></svg>
+        Download for Windows
+      </a>
+      <p class="fine light reveal" data-version>Free · Windows 10 &amp; 11</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <img src="assets/star.png" alt="" width="28" height="28">
+      <span>© 2026 Fable</span>
+      <nav aria-label="Footer">
+        <a href="#features">Features</a>
+        <a href="#faq">FAQ</a>
+        <a href="#download">Download</a>
+      </nav>
+      <span class="footer-note">Song previews provided by Deezer.</span>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
